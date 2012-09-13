@@ -1,0 +1,35 @@
+﻿<Controls:MetroWindow x:Class="VeeSharpTemplateGUI.SettingsWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Settings" Height="193" Width="384"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" Closing="MetroWindowClosing">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Controls:MetroWindow.WindowCommands>
+        <Controls:WindowCommands></Controls:WindowCommands>
+    </Controls:MetroWindow.WindowCommands>
+    <Grid>
+        <TextBox x:Name="textBoxPrefix" Height="23" Margin="129,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Text="" />
+        <Label Content=".cs file prefix" Margin="48,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
+               Width="76" />
+        <TextBox x:Name="textBoxTemplateName" Height="23" Margin="129,41,10,0" TextWrapping="Wrap"
+                 VerticalAlignment="Top" Text="" />
+        <Label Content="template name" Margin="34,41,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="90" />
+        <Button Content="Apply" Margin="0,0,10,8" HorizontalAlignment="Right" Width="51" Click="ButtonApplyClick"
+                Height="26" VerticalAlignment="Bottom" />
+        <TextBox x:Name="textBoxFolder" Height="23" Margin="129,72,10,0" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Text="" />
+        <Label Content="folder" Margin="82,72,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42" />
+
+    </Grid>
+</Controls:MetroWindow>

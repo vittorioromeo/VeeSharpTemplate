@@ -1,0 +1,27 @@
+<VeeSharpTemplate>
+  <Prefix>vec_</Prefix>
+  <TemplateName>utils</TemplateName>
+  <Code>$$	"public static class Vector2_Utils"
+$$	"{"
+
+	var types = new []{"int", "float", "double", "long"};
+	var vtypes1 = new []{"Vector2_int", "Vector2_float", "Vector2_double", "Vector2_long"};
+	var vtypes2 = new []{"Vector2_int", "Vector2_float", "Vector2_double", "Vector2_long"};
+	
+	for(var i = 0; i &lt; types.GetLength(0); i++)
+	{
+		for(var k = 0; k &lt; types.GetLength(0); k++)
+		{
+			var type = types[i];
+			var vtype1 = vtypes1[i];
+			var vtype2 = vtypes2[k];
+		
+$$			"public static " + vtype1 + " Sum(" + vtype1 + " mVector1, " + vtype2 + " mVector2)"
+$$			"{"
+$$				"return new " + vtype1 + "( " + "("+type+") mVector2.X + mVector1.X, ("+type+") mVector2.Y + mVector1.Y);"
+$$			"}"
+		}
+	}
+
+$$	"}"</Code>
+</VeeSharpTemplate>

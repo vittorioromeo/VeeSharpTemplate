@@ -1,0 +1,30 @@
+﻿<Controls:MetroWindow x:Class="VeeSharpTemplateGUI.ChoiceWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="" Height="204" Width="203"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" ShowMinButton="False"
+                      ShowMaxRestoreButton="False" ShowCloseButton="False" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Controls:MetroWindow.WindowCommands>
+        <Controls:WindowCommands></Controls:WindowCommands>
+    </Controls:MetroWindow.WindowCommands>
+    <Grid>
+        <Button x:Name="buttonChoice1" Content="Button" HorizontalAlignment="Left" Margin="10,138,0,0"
+                VerticalAlignment="Top" Width="75" />
+        <Button x:Name="buttonChoice2" Content="Button" HorizontalAlignment="Left" Margin="110,138,0,0"
+                VerticalAlignment="Top" Width="75" />
+        <TextBlock x:Name="textBlockQuestion" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap"
+                   Text="TextBlock" VerticalAlignment="Top" Height="123" Width="175" FontSize="24" FontStyle="Italic"
+                   TextAlignment="Center" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+    </Grid>
+</Controls:MetroWindow>

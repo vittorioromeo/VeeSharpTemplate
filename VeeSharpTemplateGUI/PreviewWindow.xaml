@@ -1,0 +1,35 @@
+﻿<Controls:MetroWindow x:Class="VeeSharpTemplateGUI.PreviewWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit" Title="Preview - VeeSharpTemplate" Height="441"
+                      Width="656" xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Controls:MetroWindow.WindowCommands>
+        <Controls:WindowCommands>
+            <Button x:Name="buttonTest" Content="test" Click="ButtonTestClick" />
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.WindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="377*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
+        <avalonedit:TextEditor x:Name="textBoxCode" Margin="10" VerticalScrollBarVisibility="Auto"
+                               HorizontalScrollBarVisibility="Auto" FontFamily="Consolas" Background="White" SyntaxHighlighting="C#" IsEnabled="True"
+                               LineNumbersForeground="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" IsReadOnly="True" />
+
+    </Grid>
+
+
+</Controls:MetroWindow>
