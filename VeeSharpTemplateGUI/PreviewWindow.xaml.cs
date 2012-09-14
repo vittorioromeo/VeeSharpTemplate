@@ -30,11 +30,11 @@ namespace VeeSharpTemplateGUI
         {
             try
             {
-                new PreviewWindow(false, _title + " - Test", Parser.Process(_code), "Test Successful").Show();
+                new PreviewWindow(false, _title + " - Test", Parser.Process(_code), "Test successful - results:" + Environment.NewLine).Show();
             }
             catch (Exception exception)
             {
-                textBoxCode.Text = exception.Message + Environment.NewLine + _code;
+                textBoxCode.Text = "Test failed - results:" + Environment.NewLine + exception.Message + Environment.NewLine + _code;
             }
         }
 

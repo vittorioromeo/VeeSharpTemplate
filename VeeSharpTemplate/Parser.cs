@@ -19,31 +19,39 @@ namespace VeeSharpTemplate
 
             while ((line = reader.ReadLine()) != null)
             {
-                // NOT A SYMBOL LINE
-                if (!line.TrimStart('\t').TrimStart('\b').TrimStart('\r').TrimStart(' ').StartsWith(Utils.Symbol))
+                var trimmedLine = line.TrimStart('\t').TrimStart('\b').TrimStart('\r').TrimStart(' ');
+
+                if (trimmedLine.StartsWith(Utils.Symbol))
                 {
-                    result += line + Environment.NewLine;
-                    continue;
+                    // This is a C# code line, just add it to the result
+
+                    var spacing = line.Substring(0, line.IndexOf(trimmedLine));
+                    var afterSymbolIndex = trimmedLine.IndexOf(Utils.Symbol) + Utils.Symbol.Length;
+                    var afterSymbolCode = trimmedLine.Substring(afterSymbolIndex);
+                    result += spacing + afterSymbolCode + Environment.NewLine;
                 }
-                // ---
-
-                var cleanedLine = line.Replace("\t", "").Replace("\b", "");
-                var cleanedContent = cleanedLine.Substring(Utils.Symbol.Length).TrimStart('\t').TrimStart('\b').TrimStart('\r').TrimStart(' ');
-
-                // EMPTY LINE
-                if (string.IsNullOrEmpty(cleanedContent) || string.IsNullOrWhiteSpace(cleanedContent))
+                else
                 {
-                    result += string.Format("{0}(\"\");", Utils.MethodWriteLine) + Environment.NewLine;
-                    continue;
+                    // This is a template code line
+                    // It must be converted to a TemplateWriteLine method call
+                    // Things that are between $$( )$$ must be converted to C#
+
+                    var spacing = line.Substring(0, line.IndexOf(trimmedLine));
+                    while (trimmedLine.IndexOf(Utils.SymbolOpen) != -1)
+                    {
+                        var indexStart = trimmedLine.IndexOf(Utils.SymbolOpen);
+                        var indexEnd = trimmedLine.IndexOf(Utils.SymbolClose);
+                        var symbolPart = trimmedLine.Substring(indexStart, indexEnd - indexStart + Utils.SymbolOpen.Length);
+                        var content = symbolPart.Substring(Utils.SymbolOpen.Length, symbolPart.Length - Utils.SymbolOpen.Length - Utils.SymbolClose.Length);
+
+                        trimmedLine = trimmedLine.Replace(symbolPart, string.Format("\" + {0} + \"", content));
+                    }
+
+                    var toProcess = "\"" + trimmedLine + "\"";
+                    var processed = string.Format("{0}(\"{1}\"); {2}({3});", Utils.MethodWrite, spacing, Utils.MethodWriteLine, toProcess);
+
+                    result += processed + Environment.NewLine;
                 }
-                // ---
-
-                var content = line.TrimStart(' ').Substring(Utils.Symbol.Length);
-                var contentStartIndex = content.IndexOf(cleanedContent);
-                var spacing = content.Substring(0, contentStartIndex);
-
-                var processed = string.Format("{0}(\"{1}\" + {2});", Utils.MethodWriteLine, spacing, cleanedContent);
-                result += processed + Environment.NewLine;
             }
 
             return result;

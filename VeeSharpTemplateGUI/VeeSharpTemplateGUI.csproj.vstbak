@@ -43,6 +43,7 @@
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.0.9.0.0\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity">
@@ -68,10 +69,12 @@
     <Compile Include="ChoiceWindow.xaml.cs">
       <DependentUpon>ChoiceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PreviewWindow.xaml.cs">
+      <DependentUpon>PreviewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SimpleHighlightingBrush.cs" />
     <Compile Include="SolutionWindow.xaml.cs">
       <DependentUpon>SolutionWindow.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
     <Page Include="ChoiceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PreviewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="EditorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -158,10 +165,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Compile Include="vte\vec_classes.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="vte\vec_utils.cs" />
-  </ItemGroup>
 </Project>

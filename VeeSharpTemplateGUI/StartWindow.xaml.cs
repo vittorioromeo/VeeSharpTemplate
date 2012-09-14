@@ -39,5 +39,6 @@ namespace VeeSharpTemplateGUI
 
         private void ButtonNewClick(object sender, RoutedEventArgs e) { NewSolution(); }
         private void ButtonOpenClick(object sender, RoutedEventArgs e) { OpenSolution(); }
+        private void MetroWindowClosed(object sender, EventArgs e) { Environment.Exit(0); }
     }
 }

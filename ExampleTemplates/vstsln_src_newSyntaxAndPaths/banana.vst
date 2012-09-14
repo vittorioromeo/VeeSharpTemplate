@@ -1,0 +1,36 @@
+<VeeSharpTemplate>
+  <Prefix>vst_</Prefix>
+  <TemplateName>banana</TemplateName>
+  <Code>$ // Test with new syntax
+$ //
+$ // $ prefix means that the line has to be compiled
+$ // $(x)$ means that x has to be compiled
+$ // This means that comments starting with $ won't be in the generated code
+
+$ var types = new []{"int", "float", "double", "long"};
+$ foreach (var type in types)
+$ {
+
+$ // The following line will create a new class for each type in types
+public class Banana_$(type)$
+{
+	// This is a non-compiled comment: it will be included in the generated code
+	// You can compile things in comments, too - my type is: $(type)$
+	
+	public $(type)$ Number { get; set; }
+	
+	public $(type)$ GetMultipliedNumber($(type)$ mFactor)
+	{
+		return Number * mFactor;
+	}
+}
+
+$ }
+
+$ // Pretty straightforward, right?
+$ // Template code spacing and tabs will also be preserved
+$ // By pressing on "preview" you can see the compiled code 
+$ // By pressing "test" after "preview" you can see the generated code
+$ // Have fun creating your own templates!</Code>
+  <Folder>vstsln_newSyntaxAndPaths\</Folder>
+</VeeSharpTemplate>

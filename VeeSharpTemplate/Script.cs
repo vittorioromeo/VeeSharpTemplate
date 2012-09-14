@@ -14,6 +14,7 @@ namespace VeeSharpTemplate
         public virtual void Run() { }
 
         // ReSharper disable UnusedMember.Global
+        public void Write(string mString) { _stringBuilder.Append(mString); }
         public void WriteLine(string mString)
         {
             _stringBuilder.Append(mString);

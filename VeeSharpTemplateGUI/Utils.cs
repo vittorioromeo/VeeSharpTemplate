@@ -1,4 +1,5 @@
 #region
+using Microsoft.VisualBasic;
 using Microsoft.Win32;
 using VeeSharpTemplate;
 
@@ -31,10 +32,11 @@ namespace VeeSharpTemplateGUI
         }
         public static File FileCreateFromSaveDialog(Solution mSolution)
         {
-            var saveFileDialog = new SaveFileDialog {Filter = FilterFile, InitialDirectory = mSolution.Path};
-            if (!saveFileDialog.ShowDialog().Value) return null;
+            var input = Interaction.InputBox("Template file name without extension (will be placed in solution folder)",
+                                             "Insert template file name");
+            if (string.IsNullOrEmpty(input)) return null;
 
-            var templateFile = new File(saveFileDialog.FileName);
+            var templateFile = new File(mSolution, input);
             templateFile.SaveToFile();
             return templateFile;
         }

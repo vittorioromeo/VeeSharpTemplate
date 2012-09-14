@@ -1,7 +1,8 @@
 ﻿<Controls:MetroWindow x:Class="VeeSharpTemplateGUI.SolutionWindow"
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="VeeSharpTemplate" Height="533.225" Width="811"
-                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" Closing="MetroWindowClosing">
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="VeeSharpTemplate" Height="436.417" Width="811"
+                      xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" Closing="MetroWindowClosing"
+                      BorderThickness="0">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -36,46 +37,39 @@
             <Button Content="generate" Click="ButtonGenerateClick" />
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
-    <Grid>
-        <Viewbox Margin="86,55,80,62">
-            <Grid Height="379" Width="625">
-                <TextBlock x:Name="textBlockTitle" HorizontalAlignment="Left" TextWrapping="Wrap"
-                           VerticalAlignment="Top" Height="88" Width="337" FontSize="72"
-                           Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Margin="10,2,0,0" TextAlignment="Right">
-                    <Run Language="it-it" Text="title" />
-                </TextBlock>
-                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="39"
-                           Width="266" FontSize="24" TextAlignment="Right" Margin="81,79,0,0"
-                           Foreground="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
-                    <Run Language="it-it" Text="solution browser" />
-                </TextBlock>
-                <TextBlock x:Name="textBlockProject" HorizontalAlignment="Left" TextWrapping="Wrap"
-                           VerticalAlignment="Top" Height="75" Width="325" FontSize="15" TextAlignment="Right" Margin="10,285,0,0"
-                           Foreground="#FF208EEA">
-                    <Run Language="it-it" Text="current project: " />
-                </TextBlock>
-                <ListView x:Name="listBoxFiles" HorizontalAlignment="Left" Height="339" Margin="411,21,0,0"
-                          VerticalAlignment="Top" Width="214" Background="#00000000"
-                          Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" BorderBrush="{x:Null}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn />
-                        </GridView>
-                    </ListView.View>
+    <Grid Margin="10,10,2,11">
+        <TextBlock x:Name="textBlockTitle" TextWrapping="Wrap" VerticalAlignment="Top" Height="88"
+                   FontSize="72" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Margin="10,46,345,0"
+                   TextAlignment="Right">
+            <Run Language="it-it" Text="title" />
+        </TextBlock>
+        <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Height="39" FontSize="24" TextAlignment="Right"
+                   Margin="73,123,345,0" Foreground="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}">
+            <Run Language="it-it" Text="solution browser" />
+        </TextBlock>
+        <TextBlock x:Name="textBlockProject" TextWrapping="Wrap" FontSize="15" TextAlignment="Right"
+                   Margin="10,285,345,25" Foreground="#FF208EEA">
+            <Run Language="it-it" Text="current project: " />
+        </TextBlock>
+        <ListView x:Name="listBoxFiles" Margin="0,65,67,25" Background="#00000000"
+                  Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" BorderBrush="{x:Null}"
+                  HorizontalAlignment="Right" Width="214">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn />
+                </GridView>
+            </ListView.View>
 
-                    <ListBoxItem Content="create file" MouseDoubleClick="ButtonCreateFileClick" FontSize="24"
-                                 Margin="0,0,-87,0" />
-                    <ListBoxItem Content="set project" MouseDoubleClick="ButtonSetProject" FontSize="24"
-                                 Margin="0,0,-87,0" />
-                    <ListBoxItem Content="save solution" MouseDoubleClick="ButtonSaveClick" FontSize="24"
-                                 Margin="0,0,-87,0" />
-                    <ListBoxItem Content="generate" MouseDoubleClick="ButtonGenerateClick" FontSize="24"
-                                 Margin="0,0,-87,0" />
-                    <Separator Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                               Margin="6,0,-90,0" />
-                </ListView>
-
-            </Grid>
-        </Viewbox>
+            <ListBoxItem Content="create file" MouseDoubleClick="ButtonCreateFileClick" FontSize="24"
+                         Margin="0,0,-87,0" />
+            <ListBoxItem Content="set project" MouseDoubleClick="ButtonSetProject" FontSize="24"
+                         Margin="0,0,-87,0" />
+            <ListBoxItem Content="save solution" MouseDoubleClick="ButtonSaveClick" FontSize="24"
+                         Margin="0,0,-87,0" />
+            <ListBoxItem Content="generate" MouseDoubleClick="ButtonGenerateClick" FontSize="24"
+                         Margin="0,0,-87,0" />
+            <Separator Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
+                       Margin="6,0,-90,0" />
+        </ListView>
     </Grid>
 </Controls:MetroWindow>

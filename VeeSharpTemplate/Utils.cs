@@ -18,25 +18,28 @@
         public const string XmlCSCompile = "Compile";
         public const string XmlCSInclude = "Include";
 
-        public const string Symbol = "$$";
+        public const string Symbol = "$";
+        public const string SymbolOpen = Symbol + "(";
+        public const string SymbolClose = ")" + Symbol;
+        public const string MethodWrite = "Write";
         public const string MethodWriteLine = "WriteLine";
         public const string ScriptSuffix = "}}}";
         public const string ScriptName = "GeneratedScript";
         public const string ScriptPrefix = "using System; namespace VeeSharpTemplate{ public class " + ScriptName + ":Script{ public override void Run(){";
 
-        public const string DefaultTemplateName = "unnamed";
-        public const string DefaultTemplatePrefix = "vtg_";
-        public const string DefaultTemplateCode = "// write c# code here";
-        public const string DefaultProjectFolder = @"vte\";
+        public const string DefaultTemplatePrefix = "vst_";
+        public const string DefaultTemplateCode = "// write C# and template code here";
+        public const string DefaultSolutionFolderPrefix = "vstsln_";
+        public const string DefaultSolutionSourceFolderPrefix = DefaultSolutionFolderPrefix + "src_";
 
         public const string ExtensionBackup = ".vstbak";
         public const string ExtensionSolution = ".vstsln";
         public const string ExtensionFile = ".vst";
 
         public static string RemoveBlank(this string mString) { return mString.Replace("\n", "").Replace("\r", "").Replace("\t", ""); }
-        public static File FileFromPath(string mPath)
+        public static File FileInSolutionFolder(Solution mSolution, string mFileName)
         {
-            var templateFile = new File(mPath);
+            var templateFile = new File(mSolution, mFileName);
             templateFile.LoadFromFile();
             return templateFile;
         }

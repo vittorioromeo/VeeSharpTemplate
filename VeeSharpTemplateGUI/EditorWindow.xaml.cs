@@ -11,6 +11,7 @@ namespace VeeSharpTemplateGUI
     public partial class EditorWindow
     {
         private readonly File _file;
+        private string _originalCode;
         private bool _saveChoiceMade;
         private SettingsWindow _settingsWindow;
 
@@ -25,6 +26,7 @@ namespace VeeSharpTemplateGUI
         private void ShowPreview() { new PreviewWindow(true, string.Format("{0} - Preview", _file.TemplateName), Parser.ParseSymbols(textBoxCode.Text)).Show(); }
         private void SyncFromTemplateFile()
         {
+            if (_originalCode == null) _originalCode = _file.Code;
             textBoxCode.Text = _file.Code;
             Title = string.Format("{0} - VeeSharpTemplate", _file.TemplateName);
         }
@@ -34,6 +36,7 @@ namespace VeeSharpTemplateGUI
             {
                 _file.Code = textBoxCode.Text;
                 _file.SaveToFile();
+                _originalCode = _file.Code;
             }
             catch (Exception exception)
             {
@@ -51,6 +54,7 @@ namespace VeeSharpTemplateGUI
         private void ButtonSettingsClick(object sender, RoutedEventArgs e) { ShowSettings(); }
         private void MetroWindowClosing(object sender, CancelEventArgs e)
         {
+            if (_originalCode == textBoxCode.Text) return;
             if (_saveChoiceMade) return;
 
             e.Cancel = true;

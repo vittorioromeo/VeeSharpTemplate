@@ -1,7 +1,6 @@
 #region
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Xml;
 
@@ -17,10 +16,15 @@ namespace VeeSharpTemplate
         public Solution(string mPath)
         {
             Path = mPath;
+            Directory = System.IO.Path.GetDirectoryName(mPath);
+            FileName = System.IO.Path.GetFileNameWithoutExtension(mPath);
+
             Files = new List<File>();
             _fileNames = new List<string>();
         }
 
+        public string Directory { get; private set; }
+        public string FileName { get; private set; }
         public string Path { get; private set; }
         public List<File> Files { get; private set; }
         public string ProjectFileName { get; private set; }
@@ -28,7 +32,7 @@ namespace VeeSharpTemplate
         public void AddNewFile(File mFile)
         {
             Files.Add(mFile);
-            _fileNames.Add(mFile.Path.RemoveBlank());
+            _fileNames.Add(mFile.FileName.RemoveBlank());
         }
         public void SetProject(string mProjectFileName)
         {
@@ -50,7 +54,7 @@ namespace VeeSharpTemplate
 
             xmlReader.Close();
 
-            foreach (var fileName in _fileNames) Files.Add(Utils.FileFromPath(fileName));
+            foreach (var fileName in _fileNames) Files.Add(Utils.FileInSolutionFolder(this, fileName));
         }
         public void SaveToFile()
         {
@@ -80,7 +84,7 @@ namespace VeeSharpTemplate
                 var processed = Parser.Process(parsed);
                 var folderPath = _projectPath + @"\" + templateFile.Folder;
 
-                Directory.CreateDirectory(folderPath);
+                System.IO.Directory.CreateDirectory(folderPath);
 
                 var filename = string.Format(@"{0}" + templateFile.Prefix + "{1}.cs", templateFile.Folder, templateFile.TemplateName);
                 filenames.Add(filename);

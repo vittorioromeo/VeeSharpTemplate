@@ -1,4 +1,5 @@
 #region
+using System.IO;
 using System.Xml;
 
 #endregion
@@ -7,25 +8,29 @@ namespace VeeSharpTemplate
 {
     public class File
     {
-        public File(string mPath)
-        {
-            Path = mPath;
+        private readonly Solution _solution;
 
-            TemplateName = Utils.DefaultTemplateName;
+        public File(Solution mSolution, string mFileName)
+        {
+            _solution = mSolution;
+            FileName = mFileName;
+
+            TemplateName = mFileName;
             Code = Utils.DefaultTemplateCode;
             Prefix = Utils.DefaultTemplatePrefix;
-            Folder = Utils.DefaultProjectFolder;
+            Folder = Utils.DefaultSolutionFolderPrefix + mSolution.FileName + @"\";
         }
 
         public string Code { get; set; }
         public string Prefix { get; set; }
         public string TemplateName { get; set; }
-        public string Path { get; private set; }
+        public string FileName { get; private set; }
         public string Folder { get; set; }
 
         public void SaveToFile()
         {
-            var xmlWriter = new XmlTextWriter(System.IO.File.CreateText(Path)) {Formatting = Formatting.Indented};
+            var path = CreateAndGetPath();
+            var xmlWriter = new XmlTextWriter(System.IO.File.CreateText(path)) {Formatting = Formatting.Indented};
             xmlWriter.WriteStartElement(Utils.XmlRoot);
 
             xmlWriter.WriteElementString(Utils.XmlPrefix, Prefix);
@@ -39,8 +44,8 @@ namespace VeeSharpTemplate
         }
         public void LoadFromFile()
         {
-            var xmlReader = new XmlTextReader(System.IO.File.OpenText(Path));
-
+            var path = CreateAndGetPath();
+            var xmlReader = new XmlTextReader(System.IO.File.OpenText(path));
             while (xmlReader.Read())
             {
                 if (xmlReader.NodeType != XmlNodeType.Element) continue;
@@ -52,6 +57,12 @@ namespace VeeSharpTemplate
             }
 
             xmlReader.Close();
+        }
+        private string CreateAndGetPath()
+        {
+            var directory = string.Format(@"{0}\{1}{2}\", _solution.Directory, Utils.DefaultSolutionSourceFolderPrefix, _solution.FileName);
+            Directory.CreateDirectory(directory);
+            return directory + FileName + Utils.ExtensionFile;
         }
     }
 }
