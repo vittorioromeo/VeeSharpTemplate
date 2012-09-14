@@ -27,7 +27,8 @@
         <Grid.ColumnDefinitions></Grid.ColumnDefinitions>
         <avalonedit:TextEditor x:Name="textBoxCode" Margin="10" VerticalScrollBarVisibility="Auto"
                                HorizontalScrollBarVisibility="Auto" FontFamily="Consolas" Background="White" SyntaxHighlighting="C#" IsEnabled="True"
-                               LineNumbersForeground="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" IsReadOnly="True" />
+                                IsReadOnly="True"
+                               LineNumbersForeground="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" ShowLineNumbers="True"/>
 
     </Grid>
 
