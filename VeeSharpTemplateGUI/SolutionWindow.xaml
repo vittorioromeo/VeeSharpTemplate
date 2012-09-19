@@ -38,9 +38,8 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Grid Margin="10,10,2,11">
-        <TextBlock x:Name="textBlockTitle" TextWrapping="Wrap" VerticalAlignment="Top" Height="88"
-                   FontSize="72" Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Margin="10,46,345,0"
-                   TextAlignment="Right">
+        <TextBlock x:Name="textBlockTitle" TextWrapping="Wrap" VerticalAlignment="Top" Height="88" FontSize="72"
+                   Foreground="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Margin="10,46,345,0" TextAlignment="Right">
             <Run Language="it-it" Text="title" />
         </TextBlock>
         <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" Height="39" FontSize="24" TextAlignment="Right"
@@ -62,14 +61,10 @@
 
             <ListBoxItem Content="create file" MouseDoubleClick="ButtonCreateFileClick" FontSize="24"
                          Margin="0,0,-87,0" />
-            <ListBoxItem Content="set project" MouseDoubleClick="ButtonSetProject" FontSize="24"
-                         Margin="0,0,-87,0" />
-            <ListBoxItem Content="save solution" MouseDoubleClick="ButtonSaveClick" FontSize="24"
-                         Margin="0,0,-87,0" />
-            <ListBoxItem Content="generate" MouseDoubleClick="ButtonGenerateClick" FontSize="24"
-                         Margin="0,0,-87,0" />
-            <Separator Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"
-                       Margin="6,0,-90,0" />
+            <ListBoxItem Content="set project" MouseDoubleClick="ButtonSetProject" FontSize="24" Margin="0,0,-87,0" />
+            <ListBoxItem Content="save solution" MouseDoubleClick="ButtonSaveClick" FontSize="24" Margin="0,0,-87,0" />
+            <ListBoxItem Content="generate" MouseDoubleClick="ButtonGenerateClick" FontSize="24" Margin="0,0,-87,0" />
+            <Separator Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Margin="6,0,-90,0" />
         </ListView>
     </Grid>
 </Controls:MetroWindow>

@@ -10,7 +10,6 @@ namespace VeeSharpTemplateGUI
     public static class Utils
     {
         private static readonly string FilterSolution = string.Format("VeeSharpTemplate Solution (*{0})|*{0}", VeeSharpTemplate.Utils.ExtensionSolution);
-        private static readonly string FilterFile = string.Format("VeeSharpTemplate File (*{0})|*{0}", VeeSharpTemplate.Utils.ExtensionFile);
 
         public static Solution SolutionFromSaveDialog()
         {
